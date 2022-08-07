@@ -2,9 +2,15 @@
 # Yiding Qiu
 # This file is created by: touch.gitignore 
 
-#ignore following files;
+#ignore folder
+*/DataSet/
+/DataSet/
+*/RawData/
+/RawData/
+
+#ignore following files
 *csv
 *asv
 *slxc
 *jpg
-/DataSet
+
