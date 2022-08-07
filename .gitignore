@@ -1,0 +1,10 @@
+# git ignore for Matlab Project
+# Yiding Qiu
+# This file is created by: touch.gitignore 
+
+#ignore following files;
+*csv
+*asv
+*slxc
+*jpg
+
