@@ -22,7 +22,7 @@ ObjFcn = @valErrorFun;
             layers = constructLSTM(numFeatures,numBlocks,numHiddenUnits,numResponse,true);        
         else
             numFeatures = size(XTrain{1},1);
-            layers = constructLSTM(numFeatures,numBlocks,numHiddenUnits,numResponse,true); 
+            layers = constructLSTM(numFeatures,numBlocks,numHiddenUnits,numResponse,false); 
         end
 
         

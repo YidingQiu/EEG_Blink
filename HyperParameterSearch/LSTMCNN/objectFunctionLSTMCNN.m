@@ -12,17 +12,23 @@ ObjFcn = @valErrorFun;
         miniBatchSize = optVars.miniBatchSize;
         learningrate = optVars.learningrate;
         numFeatures = size(XTrain{1});
-        numBlocks = optVars.numBlocks;
+        %numLSTMBlocks,numHiddenUnits,numCNNBlocks,filterSize,numFilters    
+        numLSTMBlocks = optVars.numLSTMBlocks;
         numHiddenUnits = optVars.numHiddenUnits;
+        numCNNBlocks = optVars.numCNNBlocks;
+        filterSize = optVars.filterSize;
+        numFilters = optVars.numFilters;
         numResponse = numel(categories(YTest{1}));
 
         if numel(numFeatures) >=3
             numFeatures = [size(XTrain{1},1) size(XTrain{1},2)];
 
-            layers = constructLSTM(numFeatures,numBlocks,numHiddenUnits,numResponse,true);        
+            layers = constructLSTMCNN(numFeatures,numLSTMBlocks,numHiddenUnits, ...
+                numCNNBlocks,filterSize,numFilters,numResponse,true);        
         else
             numFeatures = size(XTrain{1},1);
-            layers = constructLSTM(numFeatures,numBlocks,numHiddenUnits,numResponse,true); 
+            layers = constructLSTMCNN(numFeatures,numLSTMBlocks,numHiddenUnits, ...
+                numCNNBlocks,filterSize,numFilters,numResponse,false); 
         end
 
         
