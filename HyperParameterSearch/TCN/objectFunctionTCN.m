@@ -13,7 +13,7 @@ ObjFcn = @valErrorFun;
         filterSize = optVars.filterSize;
         numBlocks = optVars.numBlocks;
         dropoutFactor = optVars.dropoutFactor;
-        miniBatchSize = 8;%optVars.miniBatchSize;
+        miniBatchSize = optVars.miniBatchSize;
         learningrate = optVars.learningrate;
 
         layers = constructTCN(size(XTrain{1}, 1), numFilters, filterSize, numBlocks, dropoutFactor);
