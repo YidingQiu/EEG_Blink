@@ -7,7 +7,7 @@ function lgraph = constructTCN(numFeatures, numFilters, filterSize, numBlocks, d
         dropoutFactor   = 0.1
     end
 
-    layer  = sequenceInputLayer(numFeatures, Normalization="zerocenter", Name="sequenceInputLayer");%Normalization="zscore"
+    layer  = sequenceInputLayer(numFeatures, Normalization="zscore", Name="sequenceInputLayer");%Normalization="zscore"
     lgraph = layerGraph(layer);
     
     outputName = layer.Name;

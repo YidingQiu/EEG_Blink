@@ -7,6 +7,9 @@
 /DataSet/
 */RawData/
 /RawData/
+*/UnfinishScripts/
+/UnfinishScripts/
+
 
 #ignore following files
 *csv
