@@ -47,7 +47,7 @@ function lgraph = constructTCN(numFeatures, numFilters, filterSize, numBlocks, d
     end
     
     layers = [
-        fullyConnectedLayer(3, Name="fc")
+        fullyConnectedLayer(4, Name="fc")
         softmaxLayer
         classificationLayer("Name",'classificationLayer')
         % regressionLayer
