@@ -15,5 +15,9 @@ Currently the following classes of models have been invistigated:
 
 -----
 ### Dataset
+
+
 [1]Alexander P. Rockhill and Nicko Jackson and Jobi George and Adam Aron and Nicole C. Swann (2020). UC San Diego Resting State EEG Data from Patients with Parkinson's Disease. OpenNeuro. [Dataset] doi: 10.18112/openneuro.ds002778.v1.0.4
 https://openneuro.org/datasets/ds002778/versions/1.0.2
+
+[2]Paprocki, Rafal, Gebrehiwot, Temesgen, Gradinscak, Marija, and Artem Lenskiy. "Extracting Blink Rate Variability from EEG Signals." arXiv, (2016). https://doi.org/10.48550/arXiv.1603.03031.
