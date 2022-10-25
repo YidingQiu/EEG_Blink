@@ -13,7 +13,7 @@ Not efficient and discarded models:
 
 ### Experiment pipeline
 Working pipeling rebuilt in beginToEndPipeline.m file. Download whole EEG_Blink(around 10MB) to include all helper function.
-Can not upload big files to GitHub. So the data and lable is here: [EEG_Blink.zip](https://drive.google.com/file/d/1c0lXKpm8dkcC-b6dH14a1wcKis4JCMuC/view?usp=sharing). Unzip it to root dirctory together with beginToEndPipeline.m.
+Since big files can not uploaded to GitHub, the data and lable is here: [EEG_Blink.zip](https://drive.google.com/file/d/1c0lXKpm8dkcC-b6dH14a1wcKis4JCMuC/view?usp=sharing). Unzip it to root dirctory together with beginToEndPipeline.m.
 
 
 
