@@ -6,6 +6,7 @@ Currently the following classes of models have been invistigated:
 * 1 dimension CNN
 * TCN 
 * CNN 3 EEG channels converted to images representing wavelet coefficients 
+
 Not efficient and discarded models:
 * ~LSTM 3 EEG channels converted to images representing wavelet coefficients~
 * ~LSTM followed CNN~
