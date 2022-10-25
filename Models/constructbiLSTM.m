@@ -1,4 +1,4 @@
-function lgraph = constructLSTM(numFeatures,numBlocks,numHiddenUnits,numResponse,imgInput)
+function lgraph = constructbiLSTM(numFeatures,numBlocks,numHiddenUnits,numResponse,imgInput)
     arguments
         numFeatures = 1,
         numBlocks = 1,

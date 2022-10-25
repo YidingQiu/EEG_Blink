@@ -7,7 +7,9 @@ function []=creatCategorizedImg(chopedData, path,slice,dataClassNames)
     end
     originPath = path;
     path = fullfile(path,'PLImg');
-    mkdir(path);
+    if exist(path)==0
+        mkdir(path);
+    end
 
 
 %     cellStore = {};

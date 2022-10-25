@@ -3,10 +3,10 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
         signals
         samplingRate
         modelName = 'TCNOC'
-        options.shiftFactor = 2
+        options.shiftFactor = 3
         options.tolerance = 10
         options.plot = 0
-        options.output = 'location'
+        options.output = {'location'}
     end
     tic;
     shiftFactor = pow2(options.shiftFactor);
@@ -94,7 +94,7 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
 
     blinkLocations = findBlinkFromOpeningClosing(blinkMasks,tolerance);
     blinkLocations = blinkLocations{1};
-    blinkLocations = floor(blinkLocations/slice*(windowLength*samplingRate));
+    blinkLocations = floor(blinkLocations); % /slice*(windowLength*samplingRate)
 
     %% plot
     if plot
