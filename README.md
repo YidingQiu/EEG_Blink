@@ -1,10 +1,21 @@
 ### EEG Blink detector
 The projecs experiments with various deep learning models and EEG preprocessing for blink detection.
 Currently the following classes of models have been invistigated:
-* LSTM with 1 and 3 raw EEG channels
-* LSTM + CNN with 1 and 3 EEG channels converted to images representing wavelet coefficients
-* TCN with 1 and 3 raw EEG channels
-* CNN with 1 and 3 EEG channels converted to images representing wavelet coefficients 
+* LSTM 
+* biLSTM
+* 1 dimension CNN
+* TCN 
+* CNN 3 EEG channels converted to images representing wavelet coefficients 
+* ~LSTM 3 EEG channels converted to images representing wavelet coefficients~
+* ~LSTM followed CNN~
+
+### Experiment pipeline
+Working pipeling rebuilt in beginToEndPipeline.m file. Download whole EEG_Blink(around 10MB) to include all helper function.
+Can not upload big files to GitHub. So the data and lable is here: [EEG_Blink.zip](https://drive.google.com/file/d/1c0lXKpm8dkcC-b6dH14a1wcKis4JCMuC/view?usp=sharing). Unzip it to root dirctory together with beginToEndPipeline.m.
+
+
+
+
 
 ### Contributors:
 * Yiding Qiu
