@@ -20,8 +20,12 @@ end
 tDir = fullfile('DataSet','Test','Test','Img');mkdir(tDir);
 tDir = fullfile('DataSet','PreservedTrain','Img');mkdir(tDir);
 optVarsPath = 'HyperParameterSearch\OptVars';  % optimised parameter here
-if exist(optVarsPath) == 0
-    mkdir('HyperParameterSearch\OptVars');
+if exist(optVarsPath) ~= 7
+    mkdir(optVarsPath);
+end
+testResultPath = 'Test\Results';
+if exist(testResultPath) ~= 7
+    mkdir(testResultPath);
 end
 %% data preparation
 Ds = dataPreparation();
@@ -94,9 +98,15 @@ options = trainingOptions('adam', ...
 % tests
 accuracy = {};
 YPredResult = {};
+
 for i = 1:numTesting
     % load data set
     YLable = load(fullfile('DataSet','Test','Test',['YTestTest' num2str(i) '.mat'])).YTestTest;
+    TY = YLable{1};
+    for k = 2:numel(YLable)
+    TY = [TY;YLable{k}];
+    end
+
     imdsTest = imageDatastore(fullfile('DataSet','Test','Test',['Img', num2str(i)],'WTImg'),FileExtensions=".jpg");
     testImgSize = [size(imread(imdsTest.Files{1,1})) 1 1];
     imgsTest = ones(testImgSize);
@@ -104,23 +114,6 @@ for i = 1:numTesting
         imgsTest = cat(4,imgsTest,reshape(imread(imdsTest.Files{k,1}), testImgSize));
     end
     imgsTest=imgsTest(:,:,:,2:end);
-    
-    TY = ones([1 512 3 1]);
-    
-    % generate test mat
-    for k = 1:numel(YLable)   
-        YPiece1 = zeros([1 512 1 1]);YPiece2=YPiece1;YPiece3=YPiece1;
-        % {"blink","noBlink", "muscleArtifact"}
-        YPiece = YLable{1,k};
-        YPiece1 = reshape((YPiece==classes(1)),[1 512 1 1]);
-        YPiece2 = reshape((YPiece=='no-blink'),[1 512 1 1]);
-        YPiece2 = YPiece2+reshape((YPiece=='n/a'),[1 512 1 1]);
-        YPiece3 = reshape((YPiece=='muscle-artifact'),[1 512 1 1]);
-        YPiece = cat(3,YPiece1,YPiece2);YPiece = cat(3,YPiece,YPiece3);
-        TY = cat(4,TY,YPiece);
-    end
-    TY = TY(:,:,:,2:end);
-    dsTest = {TY,imgsTest};
 
     YLable = load(fullfile('DataSet','HyperparameterSearch','Test','YSearchTest.mat')).YSearchTest;
     dataClassNames = ["blink","n/a", "muscle-artifact"];pixelLabelIds = 1:numel(dataClassNames);
@@ -139,8 +132,8 @@ for i = 1:numTesting
     WTCNNnet = trainNetwork(dsTrain,layers,options);
     % evaluate
     [YPred,scores,allScores]=semanticseg(imgsTest,WTCNNnet);
-    valError = 1-mean(abs(allScores - TY),'all')/numel(classes);
-    accuracy{end+1} = valError/length(YPred);
+    valError = 1-mean(YPred == TY','all');
+    accuracy{end+1} = valError;
     YPredResult{end+1} = YPred;
 %     disp(i);
     
