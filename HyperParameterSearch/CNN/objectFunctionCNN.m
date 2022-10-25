@@ -6,7 +6,7 @@ ObjFcn = @valErrorFun;
         
         TY = Testdata{1};
         imgsTest = Testdata{2};
-        imSize=[221 512 3];
+        imSize=size(imread('DataSet\HyperparameterSearch\Train\Img\WTImg\0001_wt.jpg'));
         numBlocks = optVars.numBlocks;
         filterSizeC= floor((optVars.filterSizeC)/2)*2+1;
         filterSizeS= floor((optVars.filterSizeS)/2)*2+1;
