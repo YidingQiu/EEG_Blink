@@ -15,8 +15,8 @@ function [signal] = passbandBlinks(signal, fs, filter)
         signal(:, k).Variables  = signal(:, k).Variables - (p(1) * [1:height(signal)]' + p(2)); 
     end
     if filter
-        signal.Variables = highpass(signal.Variables, lf_cutoff, fs, "Steepness", 0.85, "ImpulseResponse", "iir");
-        signal.Variables = lowpass(signal.Variables,  hf_cutoff, fs, "Steepness", 0.85, "ImpulseResponse", "iir");
+        signal.Variables = highpass(signal.Variables, lf_cutoff, fs, "ImpulseResponse", "iir");%, "Steepness", 0.85,"StopbandAttenuation",60
+        signal.Variables = lowpass (signal.Variables, hf_cutoff, fs, "ImpulseResponse", "iir");%, "Steepness", 0.85,"StopbandAttenuation",60
     end
     
 end

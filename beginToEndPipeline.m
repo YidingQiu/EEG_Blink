@@ -41,7 +41,7 @@ if contains(BayesOptimiseFor,'WTCNN')
     optimVars = [
         %numBlocks,filterSizeC,filterSizeS, filterNum,
         %dropoutLayerRegularization,activation,learningrate
-        optimizableVariable('batchSize',[8 128],'Type','integer')%[8 128]
+        optimizableVariable('batchSize',[8 32],'Type','integer')%[8 128]
         optimizableVariable('numBlocks',[1 5],'Type','integer')%[1 5]
         optimizableVariable('filterSizeC',[3 33],'Type','integer')%[3 33]
         optimizableVariable('filterSizeS',[3 33],'Type','integer')%[3 33]

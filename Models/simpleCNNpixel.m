@@ -21,7 +21,7 @@ function lgraph = simpleCNNpixel(imSize,numBlocks,filterSizeC,filterSizeS, filte
     
     paddingSizeS = floor(filterSizeS/2);
     paddingSizeC = floor(filterSizeC/2);
-    pool = floor(nthroot(imSize(1),numBlocks))+1;    
+    pool = floor(nthroot(imSize(1),numBlocks))+2;    
     response = 3;
     
     layers = imageInputLayer(imSize,'Name','input');

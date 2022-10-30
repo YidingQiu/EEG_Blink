@@ -43,7 +43,7 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
         X = {};
         
         for j = 1+(slice/shiftFactor)*i:slice:size(signals,1)-slice
-            X{end+1,1} = table2array(signals(j:j+slice-1,:))';        
+            X{end+1,1} = table2array(filteredSignals(j:j+slice-1,:))';        
         end
     
         if modelName == "WTCNN"
@@ -55,13 +55,16 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
                 [cfs, ~] = fb.wt(X{j});
                 acfs = abs(cfs);
                 acfs = acfs - min(min(acfs));
-                th = quantile(acfs(:) , 0.975); %0.975            
-                acfs(acfs(:) > th) = th;
-                acfs = acfs/th;
+%                 th = quantile(acfs(:) , 0.975); %0.975            
+%                 acfs(acfs(:) > th) = th;
+%                 acfs = acfs/th;
                 if isempty(img)
-                    img = im2uint8(acfs);
+
+%                     img = im2uint8(acfs);
+                    img = uint8(acfs);
                 else
-                    img = cat(3,img,im2uint8(acfs));
+%                     img = cat(3,img,im2uint8(acfs));
+                    img = cat(3,img,uint8(acfs));
                 end
                 [segY{j},~,~]=semanticseg(img,model);
             end

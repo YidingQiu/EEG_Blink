@@ -13,13 +13,13 @@ ObjFcn = @valErrorFun;
         numFilter= optVars.filterNum;
         dropoutLayerRegularization = optVars.dropoutLayerRegularization;
         learningrate = optVars.learningrate;
-        activation=optVars.activation;
+%         activation=optVars.activation;
         batchSize=optVars.batchSize;
 
         classes = ["blink","noBlink", "muscleArtifact"];
         % imSize,numBlocks,filterSizeC,filterSizeS, filterNum, dropoutLayerRegularization,classes,activation
         layers = simpleCNNpixel(imSize,numBlocks,filterSizeC,filterSizeS, ...
-            numFilter, dropoutLayerRegularization,classes,activation);%,
+            numFilter, dropoutLayerRegularization,classes,"relu");%,
         
 
 
