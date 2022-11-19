@@ -12,7 +12,7 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
     shiftFactor = pow2(options.shiftFactor);
     % TODO: auto search on tolerance
     tolerance = options.tolerance;
-    plot = options.plot;
+    plotOption = options.plot;
     %% reshape
     if (size(signals, 1) < size(signals, 2))
         signals = signals';
@@ -32,8 +32,8 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
     end
     filteredSignals = passbandBlinks(signals, samplingRate);
     filteredSignals = array2table(resample(filteredSignals.Variables, slice, windowLength*samplingRate),  'VariableNames', filteredSignals.Properties.VariableNames);
-    
-
+%     Ds=load('Ds.mat').Ds;
+% filteredSignals = Ds{1}{1};
     %% apply model
 
     model = load(['Models\trainedModels\' modelName 'net.mat']).net;    
@@ -42,7 +42,7 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
     for i = (1:shiftFactor)-1
         X = {};
         
-        for j = 1+(slice/shiftFactor)*i:slice:size(signals,1)-slice
+        for j = 1+(slice/shiftFactor)*i:slice:size(filteredSignals,1)-slice
             X{end+1,1} = table2array(filteredSignals(j:j+slice-1,:))';        
         end
     
@@ -52,20 +52,24 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
                 'SamplingFrequency', samplingRate,'FrequencyLimits', [0.3333 20]);  
             for j = 1:numel(X)
                 img = [];
-                [cfs, ~] = fb.wt(X{j});
-                acfs = abs(cfs);
-                acfs = acfs - min(min(acfs));
-%                 th = quantile(acfs(:) , 0.975); %0.975            
-%                 acfs(acfs(:) > th) = th;
-%                 acfs = acfs/th;
-                if isempty(img)
-
-%                     img = im2uint8(acfs);
-                    img = uint8(acfs);
-                else
-%                     img = cat(3,img,im2uint8(acfs));
-                    img = cat(3,img,uint8(acfs));
+                for k = 1:3
+                    [cfs, ~] = fb.wt(X{j}(k,:));
+                    acfs = abs(cfs);
+                    acfs = acfs - min(min(acfs));
+    %                 th = quantile(acfs(:) , 0.975); %0.975            
+    %                 acfs(acfs(:) > th) = th;
+    %                 acfs = acfs/th;
+                
+                    if isempty(img)
+    
+    %                     img = im2uint8(acfs);
+                        img = uint8(acfs);
+                    else
+    %                     img = cat(3,img,im2uint8(acfs));
+                        img = cat(3,img,uint8(acfs));
+                    end
                 end
+                img = ones([270 512 3]);
                 [segY{j},~,~]=semanticseg(img,model);
             end
             Y{end+1} = segY;
@@ -94,25 +98,30 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
     while numel(blinkMasks) < signalLength
         blinkMasks = [blinkMasks, 'n/a'];
     end
-
-    blinkLocations = findBlinkFromOpeningClosing(blinkMasks,tolerance);
-    blinkLocations = blinkLocations{1};
-    blinkLocations = floor(blinkLocations); % /slice*(windowLength*samplingRate)
-
+    
+    if sum(strcmp(categories(blinkMasks),"opening")) % oc 
+        blinkLocations = findBlinkFromOpeningClosing(blinkMasks,tolerance);
+        blinkLocations = blinkLocations{1};        
+    else % blink or not
+        blinkLocations = blinkLocate(filteredSignals,blinkMasks);
+    end
+    blinkLocations = floor(blinkLocations/slice*(windowLength*samplingRate)); % 
+    masks = blinkMasks;
+%     for k = 1:signalLength
+%         index = floor(k/(windowLength*samplingRate)*slice)+1;
+%         masks(k)=
+%     blinkMasks = resample(blinkMasks, windowLength*samplingRate, slice);
     %% plot
-    if plot
-        coordinate = signals.Var1(blinkLocations);
-
+    if plotOption
+        plotSignal = signals.Fp1;        
+        coordinate = plotSignal(blinkLocations,1);
         figure();
-
-        hold on;
-        plot(signals.Var1');
-        plot(location,coordinate,'r*');
-        hold off;
+        hold('on');
+        plot(1:size(plotSignal,1),plotSignal');
+        plot(blinkLocations,coordinate,'r*');
+        hold('off');
         %plot();
     end
-
-
     %% output
     output = options.output;
     nargout = numel(output); % sum(ismember(output,','))+1;
@@ -121,7 +130,7 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
             varargout{k} = blinkLocations;
 %             output = output(~ismember(output,'location'));
         elseif contains(output{k},'mask')
-            varargout{k} = blinkMasks;
+            varargout{k} = masks;
 %             output = output(~ismember(output,'mask'));
         elseif contains(output{k},'time')
             varargout{k} = toc;
@@ -130,7 +139,6 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
     end 
 end
 
- 
 %% helper function
 function weightedSeq = weightingLable(seqArray)
     length = max(size(seqArray));

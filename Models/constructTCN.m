@@ -1,10 +1,11 @@
-function lgraph = constructTCN(numFeatures, numFilters, filterSize, numBlocks, dropoutFactor)
+function lgraph = constructTCN(numFeatures, numFilters, filterSize, numBlocks, dropoutFactor,numReponse)
     arguments
         numFeatures     = 1
         numFilters      = 16
         filterSize      = 21 
         numBlocks       = 2
         dropoutFactor   = 0.1
+        numReponse      = 3
     end
 
     layer  = sequenceInputLayer(numFeatures, Normalization="zscore", Name="sequenceInputLayer");%Normalization="zscore"
@@ -47,7 +48,7 @@ function lgraph = constructTCN(numFeatures, numFilters, filterSize, numBlocks, d
     end
     
     layers = [
-        fullyConnectedLayer(3, Name="fc")
+        fullyConnectedLayer(numReponse, Name="fc")
         softmaxLayer
         classificationLayer("Name",'classificationLayer')
         % regressionLayer
