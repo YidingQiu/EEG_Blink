@@ -1,6 +1,6 @@
 ### EEG Blink detector
 To use the Blink detector function: detectBlinks, folder Package and Models should include in the MATLAB search path.
-Example of the function is in [Package\examlpe.mlx](./Package/examlpe.mlx). 
+Example of the function is in [Package\examlpe.mlx](). 
 
 
 ### Project
