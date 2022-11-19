@@ -1,4 +1,9 @@
 ### EEG Blink detector
+To use the Blink detector function: detectBlinks, folder Package and Models should include in the MATLAB search path.
+Example of the function is in [Package\examlpe.mlx](Package\examlpe.mlx). 
+
+
+### Project
 The projecs experiments with various deep learning models and EEG preprocessing for blink detection.
 Currently the following classes of models have been invistigated:
 * LSTM 
