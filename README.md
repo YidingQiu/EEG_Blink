@@ -31,7 +31,9 @@ Since big files can not uploaded to GitHub, the data and label is here: [EEG_Bli
 * Artem Lenskiy
 
 
-
+### Contact
+[email](Yiding.Qiu@anu.edu.au)
+[email](qiu-yiding@qq.com)
 
 -----
 ### Dataset
