@@ -7,6 +7,7 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
         options.tolerance = 10
         options.plot = 0
         options.output = {'location'}
+        options.shortSignal = 0
     end
     tic;
     shiftFactor = pow2(options.shiftFactor);
@@ -41,9 +42,12 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
     Y = {};
     for i = (1:shiftFactor)-1
         X = {};
-        
-        for j = 1+(slice/shiftFactor)*i:slice:size(filteredSignals,1)-slice
-            X{end+1,1} = table2array(filteredSignals(j:j+slice-1,:))';        
+        if options.shortSignal % for runtime check 
+            X = table2array(filteredSignals);
+        else
+            for j = 1+(slice/shiftFactor)*i:slice:size(filteredSignals,1)-slice
+                X{end+1,1} = table2array(filteredSignals(j:j+slice-1,:))';        
+            end
         end
     
         if modelName == "WTCNN"
