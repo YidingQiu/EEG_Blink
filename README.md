@@ -1,4 +1,7 @@
 ### EEG Blink detector
+This is a function that locate the blink-artifact appeared in electroencephalogram.
+![this is a blink finding function](https://user-images.githubusercontent.com/70067693/233838531-fb55a615-9206-460e-a13d-1cd7e9d054cd.png)
+
 To use the Blink detector function: detectBlinks, folder Package and Models should include in the MATLAB search path.
 An example of the function is in [Package\examlpe.mlx](Package/example.mlx). 
 
