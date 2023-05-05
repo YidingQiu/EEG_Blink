@@ -8,7 +8,7 @@ To use the detectBlinks function, ensure that the Package and Models folders are
 
 ![this is a blink finding function](https://user-images.githubusercontent.com/70067693/233838531-fb55a615-9206-460e-a13d-1cd7e9d054cd.png)
 
-An example of the function is in Package\\[examlpe.pdf](Package/example.pdf) (Package\\[examlpe.mlx](Package/example.mlx)). 
+An example of the function is in Package\/[examlpe.pdf](Package/example.pdf) (Package\/[examlpe.mlx](Package/example.mlx)). 
 
 This project is being closely watched and updated continuously. If you have any suggestions or find any issues, please leave your review or discussion, or contact the [email](#contact_info) below.
 
@@ -21,18 +21,22 @@ Currently the following classes of models have been invistigated:
 * LSTM 
 * biLSTM
 * 1 dimension CNN
+    Apply 1 dimentional kernel on time series data.
 * TCN 
-* CNN 3 EEG channels converted to images representing wavelet coefficients 
+    Temporal convolutional network. Dilated convolution applied, to increase the receptive field.
+* WTCNN     
+    3 EEG channels converted to images representing wavelet coefficients, then CNN applied.
 
 Not efficient and discarded models:
-* ~LSTM 3 EEG channels converted to images representing wavelet coefficients~
+* ~WTLSTM~
 * ~LSTM followed CNN~
+
+Upcoming experiment on this:
+* transformer model applies attention mechanisms
 
 ### Experiment pipeline
 ![image](https://user-images.githubusercontent.com/70067693/236393337-0d293251-c68f-4c1c-aeff-a3ea1241f514.png)
 An example of working pipeline rebuilt in beginToEndPipeline.m file. If you want to run it, please download whole EEG_Blink to include all helper function.
-
-
 
 
 
@@ -54,3 +58,7 @@ qiu-yiding@qq.com
 https://openneuro.org/datasets/ds002778/versions/1.0.2
 
 [2]Paprocki, Rafal, Gebrehiwot, Temesgen, Gradinscak, Marija, and Artem Lenskiy. "Extracting Blink Rate Variability from EEG Signals." arXiv, (2016). https://doi.org/10.48550/arXiv.1603.03031.
+
+
+### Dependencies
+[1]Deep Learning Toolbox
