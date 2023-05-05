@@ -8,7 +8,7 @@ To use the detectBlinks function, ensure that the Package and Models folders are
 
 ![this is a blink finding function](https://user-images.githubusercontent.com/70067693/233838531-fb55a615-9206-460e-a13d-1cd7e9d054cd.png)
 
-An example of the function is in Package\[examlpe.pdf](Package/example.pdf) (Package\[examlpe.mlx](Package/example.mlx)). 
+An example of the function is in Package\\[examlpe.pdf](Package/example.pdf) (Package\\[examlpe.mlx](Package/example.mlx)). 
 
 This project is being closely watched and updated continuously. If you have any suggestions or find any issues, please leave your review or discussion, or contact the [email](#contact_info) below.
 
