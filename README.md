@@ -16,7 +16,7 @@ This project is being closely watched and updated continuously. If you have any 
 [![View EEG_Blink on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://au.mathworks.com/matlabcentral/fileexchange/120873-eeg_blink)
 
 ### Project
-The projecs experiments with various deep learning models and EEG preprocessing for blink detection.
+The project's experiments with various deep learning models and EEG preprocessing for blink detection.
 Currently the following classes of models have been invistigated:
 * LSTM 
 * biLSTM
