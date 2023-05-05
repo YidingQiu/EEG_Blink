@@ -4,7 +4,7 @@ This project provides a blink detection function for EEG data, utilizing various
 ![this is a blink finding function](https://user-images.githubusercontent.com/70067693/233838531-fb55a615-9206-460e-a13d-1cd7e9d054cd.png)
 
 
-An example of the function is in [Package\examlpe.mlx](Package/example.mlx). 
+An example of the function is in [Package\examlpe.pdf](Package/example.pdf) ([Package\examlpe.mlx](Package/example.mlx)). 
 
 ### File exchange repository
 [![View EEG_Blink on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://au.mathworks.com/matlabcentral/fileexchange/120873-eeg_blink)
