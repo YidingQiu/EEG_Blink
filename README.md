@@ -21,10 +21,15 @@ Currently the following classes of models have been invistigated:
 * LSTM 
 * biLSTM
 * 1 dimension CNN
+    
     Apply 1 dimentional kernel on time series data.
+    
 * TCN 
+    
     Temporal convolutional network. Dilated convolution applied, to increase the receptive field.
-* WTCNN     
+    
+* WTCNN  
+   
     3 EEG channels converted to images representing wavelet coefficients, then CNN applied.
 
 Not efficient and discarded models:
