@@ -1,10 +1,11 @@
-function [signal] = passbandBlinks(signal, fs, filter)
+function [signal] = passbandBlinks(signal, fs, filter, range)
     arguments
         signal  =   [];
-        fs      =   512;           % sampling rate
+        fs      =   512           % sampling rate
         filter  =   true
+        range   =   [20 240]
     end
-    bpm     =   [20 240];      % blinks per minute [min max]
+    bpm         = range;      % blinks per minute [min max]
     bps         = bpm / 60;       % blinks per second
     lf_cutoff   = bps(1); % set low cut off frequency
     hf_cutoff   = bps(2); % set hight cut off frequency    
