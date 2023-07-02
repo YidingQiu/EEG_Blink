@@ -1,4 +1,4 @@
-.function [searchTrain,testSave,validationTest] = splitSignalIntoSeveralSegments(signal, datasetSplitRatio, step, segLength)
+function [searchTrain,testSave,validationTest] = splitSignalIntoSeveralSegments(signal, datasetSplitRatio, step, segLength)
 
     if(size(signal, 1) < size(signal, 2))
         signal = signal';

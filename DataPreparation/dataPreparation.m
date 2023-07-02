@@ -1,4 +1,4 @@
-function Ds = dataPreparation(slice,fs,dsFactor,numTesting,ratioValidationTest,ratioPreserveTrain)
+function Ds = dataPreparation(slice,fs,dsFactor,numTesting,ratioValidationTest,ratioPreserveTrain,frontElectrodesLabels)
     arguments
         slice = 512,
         fs = 512,
@@ -6,6 +6,7 @@ function Ds = dataPreparation(slice,fs,dsFactor,numTesting,ratioValidationTest,r
         numTesting = 10,
         ratioValidationTest = 0.2,
         ratioPreserveTrain = 0.1
+        frontElectrodesLabels = ["Fp1", "Fp2", "Fz"]; % , "AF3", "AF4", "F7", "F8"
     end
 
     %% signal and label read in, preprocess
@@ -27,7 +28,7 @@ function Ds = dataPreparation(slice,fs,dsFactor,numTesting,ratioValidationTest,r
     eegFiles(1:2) = [];
     Ds = {};
     
-    frontElectrodesLabels = ["Fp1", "Fp2", "Fz"]; % , "AF3", "AF4", "F7", "F8"
+    
     categroies = {'blink', 'n/a', 'muscle-artifact'};
     for k = 1:31
         tokens = strsplit(ds.Row{k}, '\');

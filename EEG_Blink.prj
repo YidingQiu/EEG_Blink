@@ -1,0 +1,294 @@
+<deployment-project plugin="plugin.toolbox" plugin-version="1.0">
+  <configuration file="C:\Users\Yiding\Documents\MATLAB\EEG_Blink\EEG_Blink.prj" location="C:\Users\Yiding\Documents\MATLAB\EEG_Blink" name="EEG_Blink" target="target.toolbox" target-name="Package Toolbox">
+    <param.appname>EEG_Blink</param.appname>
+    <param.authnamewatermark>Yiding Qiu, Artem Lenskiy</param.authnamewatermark>
+    <param.email>qiu-yiding@qq.com</param.email>
+    <param.company />
+    <param.summary>EEG_Blink is used for detect blink in EEG. EEGLAB plugin, standalone function,</param.summary>
+    <param.description />
+    <param.screenshot />
+    <param.version>0.1</param.version>
+    <param.output>${PROJECT_ROOT}\EEG_Blink.mltbx</param.output>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.guid>de6666d3-8d82-45cd-ab5a-64ecff461123</param.guid>
+    <param.exclude.filters />
+    <param.exclude.pcodedmfiles>true</param.exclude.pcodedmfiles>
+    <param.examples />
+    <param.demosxml />
+    <param.apps />
+    <param.registered.apps>
+      <file>${PROJECT_ROOT}\Package\EEG_Blink\interface\simpleDisplay.mlapp</file>
+    </param.registered.apps>
+    <param.docs />
+    <param.getting.started.guide />
+    <param.matlabpath.excludes />
+    <param.javaclasspath.excludes />
+    <param.exported.on.package>false</param.exported.on.package>
+    <param.required.addons />
+    <param.matlab.project.id />
+    <param.matlab.project.name />
+    <param.release.start />
+    <param.release.end />
+    <param.release.current.only>false</param.release.current.only>
+    <param.compatiblity.windows>true</param.compatiblity.windows>
+    <param.compatiblity.macos>false</param.compatiblity.macos>
+    <param.compatiblity.linux>true</param.compatiblity.linux>
+    <param.compatiblity.matlabonline>true</param.compatiblity.matlabonline>
+    <param.installation.map />
+    <param.additional.sw.names />
+    <param.additional.sw.licenses />
+    <param.additional.sw.win.url />
+    <param.additional.sw.mac.url />
+    <param.additional.sw.linux.url />
+    <unset>
+      <param.authnamewatermark />
+      <param.email />
+      <param.company />
+      <param.description />
+      <param.screenshot />
+      <param.output />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.exclude.filters />
+      <param.exclude.pcodedmfiles />
+      <param.examples />
+      <param.demosxml />
+      <param.apps />
+      <param.docs />
+      <param.getting.started.guide />
+      <param.matlabpath.excludes />
+      <param.javaclasspath.excludes />
+      <param.exported.on.package />
+      <param.required.addons />
+      <param.matlab.project.id />
+      <param.matlab.project.name />
+      <param.release.start />
+      <param.release.end />
+      <param.release.current.only />
+      <param.compatiblity.windows />
+      <param.compatiblity.linux />
+      <param.compatiblity.matlabonline />
+      <param.installation.map />
+      <param.additional.sw.names />
+      <param.additional.sw.licenses />
+      <param.additional.sw.win.url />
+      <param.additional.sw.mac.url />
+      <param.additional.sw.linux.url />
+    </unset>
+    <fileset.rootdir>
+      <file>${PROJECT_ROOT}\Package</file>
+    </fileset.rootdir>
+    <fileset.rootfiles>
+      <file>${PROJECT_ROOT}\Package\applyingModles.mlx</file>
+      <file>${PROJECT_ROOT}\Package\blinkLocate.m</file>
+      <file>${PROJECT_ROOT}\Package\DesktopToolset.xml</file>
+      <file>${PROJECT_ROOT}\Package\detectBlinks.asv</file>
+      <file>${PROJECT_ROOT}\Package\detectBlinks.m</file>
+      <file>${PROJECT_ROOT}\Package\EEG_Blink</file>
+      <file>${PROJECT_ROOT}\Package\eeglabhist.m</file>
+      <file>${PROJECT_ROOT}\Package\example.mlx</file>
+      <file>${PROJECT_ROOT}\Package\example.pdf</file>
+      <file>${PROJECT_ROOT}\Package\findBlinkFromOpeningClosing.m</file>
+      <file>${PROJECT_ROOT}\Package\Helper</file>
+      <file>${PROJECT_ROOT}\Package\sampleData.mat</file>
+    </fileset.rootfiles>
+    <fileset.depfun.included>
+      <file>${PROJECT_ROOT}\DataPreparation\getmask.m</file>
+      <file>${PROJECT_ROOT}\Models\customLayers\spatialDropoutLayer.m</file>
+      <file>${PROJECT_ROOT}\raw_labled.mat</file>
+    </fileset.depfun.included>
+    <fileset.depfun.excluded>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@eegobj\display.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@eegobj\eegobj.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@eegobj\fieldnames.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@eegobj\horzcat2.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@eegobj\isfield.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@eegobj\isstruct.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@eegobj\length.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@eegobj\orderfields.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@eegobj\rmfield.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@eegobj\simpletest.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@eegobj\subsasgn.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@eegobj\subsref.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\binaryopp.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\bsxfun.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\changefile.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\checkcopies_local.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\checkworkspace.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\ctranspose.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\display.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\double.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\end.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\fft.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\isnumeric.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\length.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\mmo.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\ndims.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\permute.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\reshape.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\size.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\subsasgn.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\subsasgn_old.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\subsref.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\sum.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\transpose.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\unitaryopp.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\@mmo\var.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\eeg_checkchanlocs.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\eeg_checkset.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\eeg_eval.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\eeg_getdatact.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\eeg_getversion.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\eeg_hist.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\eeg_options.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\eeg_optionsbackup.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\eeg_retrieve.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\eeg_store.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\eeglab_options.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\error_bc.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\intersect_bc.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\is_sccn.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\ismatlab.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\plugin_askinstall.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\plugin_getweb.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\plugin_install.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\plugin_urlread.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\plugin_urlreadwrite.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\plugin_urlsize.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\plugin_urlwrite.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\setdiff_bc.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\union_bc.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\unique_bc.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\adminfunc\vararg2str.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\guifunc\errordlg2.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\guifunc\finputcheck.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\guifunc\inputdlg2.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\guifunc\inputgui.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\guifunc\questdlg2.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\guifunc\supergui.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\guifunc\warndlg2.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_boundarytype.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_decodechan.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_eegrej.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_emptyset.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_findboundaries.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_getica.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_insertbound.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_interp.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_isboundary.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_lat2point.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_mergelocs.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_mergelocs_diffstruct.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_point2lat.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_uniformepochinfo.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\eeg_urlatency.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\pop_chancenter.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\pop_chanedit.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\pop_editeventvals.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\pop_importepoch.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\pop_loadset.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\pop_saveset.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\pop_select.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\popfunc\pop_writelocs.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\celltomat.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\chancenter.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\convertlocs.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\eegrej.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\epoch.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\fastif.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\floatwrite.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\forcelocs.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\gettempfolder.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\icadefs.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\isscript.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\loadtxt.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\lookupchantemplate.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\mattocell.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\parsetxt.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\plotchans3d.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\readeetraklocs.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\readelp.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\readlocs.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\readneurodat.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\readneurolocs.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\readtxtfile.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\sph2topo.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\strmultiline.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\topo2sph.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\topoplot.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\uigetfile2.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\uiputfile2.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\sigprocfunc\writelocs.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\studyfunc\std_chaninds.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\functions\studyfunc\std_maketrialinfo.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\plugins\bva-io-master\parsebvmrk.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\plugins\bva-io-master\pop_loadbv.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\plugins\bva-io-master\readbvconf.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\plugins\dipfit\dipfitdefs.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\plugins\dipfit\eeglab2fieldtrip.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\plugins\dipfit\pop_dipfit_settings.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\plugins\dipfit\traditionaldipfit.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\plugins\EEG_Blink\blinkDetector.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\plugins\EEG_Blink\detectBlinks.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\plugins\EEG_Blink\detectOptions.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\plugins\EEG_Blink\find_ch.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\plugins\EEG_Blink\findBlinkFromOpeningClosing.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\plugins\EEG_Blink\passbandBlinks.m</file>
+      <file>C:\Users\Yiding\Documents\MATLAB\eeglab2023.0\plugins\neuroscanio-master\adjustlocs.m</file>
+    </fileset.depfun.excluded>
+    <fileset.package />
+    <build-deliverables>
+      <file location="${PROJECT_ROOT}" name="EEG_Blink.mltbx" optional="false">C:\Users\Yiding\Documents\MATLAB\EEG_Blink\EEG_Blink.mltbx</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>D:\Program Files\MATLAB\R2023a</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+        <toolbox name="embeddedcoder" />
+        <toolbox name="gpucoder" />
+        <toolbox name="neuralnetwork" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <embeddedcoder>
+          <enabled>true</enabled>
+        </embeddedcoder>
+      </toolbox>
+      <toolbox>
+        <gpucoder>
+          <enabled>true</enabled>
+        </gpucoder>
+      </toolbox>
+      <toolbox>
+        <neuralnetwork>
+          <enabled>true</enabled>
+        </neuralnetwork>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>

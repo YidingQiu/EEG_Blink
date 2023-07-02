@@ -1,5 +1,5 @@
-function [OUTEEG,response] = pop_EEG_Blink(EEG)%[,response] =
-OUTEEG = EEG;
+function [OUTEEG,response] = pop_EEG_Blink(ALLEEG)%[,response] =
+OUTEEG = ALLEEG(1);
 response = sprintf("EEG_Blink running");
 disp(response);
 if_plot = true;
@@ -26,7 +26,7 @@ end
 %% pop up window simpleDisplay
 appOptions = detectOptions();
 blinkDetectorObj = blinkDetector(ch_table, samplingRate, 'TCNOC', appOptions);
-simpleDisplay(blinkDetectorObj);
+simpleDisplay(blinkDetectorObj,ALLEEG);
 
 
 

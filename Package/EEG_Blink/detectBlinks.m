@@ -10,6 +10,7 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
         options.shortSignal = 0
     end
     tic;
+    h = waitbar(0, 'Please wait...');
     shiftFactor = pow2(options.shiftFactor);
     % TODO: auto search on tolerance
     tolerance = options.tolerance;
@@ -38,6 +39,9 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
     %% apply model
 
     model = load(['Models\trainedModels\' modelName 'net.mat']).net;    
+    
+    progress = 0;
+    waitbarIter = shiftFactor*size(filteredSignals,1);
 
     Y = {};
     for i = (1:shiftFactor)-1
@@ -75,11 +79,16 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
                 end
                 img = ones([270 512 3]);
                 [segY{j},~,~]=semanticseg(img,model);
+
+            progress = progress + 1;
+            waitbar(progress / waitbarIter, h);
             end
             Y{end+1} = segY;
         else 
             Y{end+1} = classify(model, X, "MiniBatchSize",1);
 
+            progress = progress + size(filteredSignals,1);
+            waitbar(progress / waitbarIter, h);
         end
 
         lable = [];        
@@ -141,6 +150,7 @@ function varargout = detectBlinks(signals,samplingRate,modelName,options)
 %             output = output(~ismember(output,'time'));
         end
     end 
+    close(h);
 end
 
 %% helper function

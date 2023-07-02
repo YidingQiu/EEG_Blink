@@ -14,8 +14,8 @@ function lgraph = constructLSTM(numFeatures,numBlocks,numHiddenUnits,numResponse
 
         layer  = [sequenceInputLayer(numFeatures, 'Normalization','zerocenter','Name','sequenceInputLayer')
 %                 convolution2dLayer([3 1],numFilter,'Stride',[1 1],'Padding',[1 1 0 0])
-                flattenLayer("Name",'flatten')
-                ]; % fc
+                  flattenLayer("Name",'flatten')
+                 ]; % fc
     end
 
     lgraph = layerGraph(layer);
