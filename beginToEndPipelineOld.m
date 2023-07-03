@@ -1,3 +1,7 @@
+% This is the old version(2022.12) pipeline. In this wersion, we still use
+% image to store the wavelet transformed result, which can only store up to
+% 3 channel. In a new version(2023.07) we applied the cwtLayer.
+
 % put RawData folder and raw_labled.mat in root dir together with this file
 % run this file to get result of model
 %% variables
@@ -10,6 +14,15 @@ numTesting = 10;              % number of tests for optimised models
 BayesOptimiseFor = ['WTCNN',  % choose to run hyperparameter search for which models
                     '']; 
 %% build path
+% 'Img' is the place that store imgs for pixelclsificatin
+% orthers are store as .mat
+tDir = fullfile('DataSet','HyperparameterSearch','Train','Img');mkdir(tDir);
+tDir = fullfile('DataSet','HyperparameterSearch','Test','Img');mkdir(tDir);
+for i = 1:numTesting
+    tDir = fullfile('DataSet','Test','Train',['Img',num2str(i)]);mkdir(tDir);    
+end
+tDir = fullfile('DataSet','Test','Test','Img');mkdir(tDir);
+tDir = fullfile('DataSet','PreservedTrain','Img');mkdir(tDir);
 optVarsPath = 'HyperParameterSearch\OptVars';  % optimised parameter here
 if exist(optVarsPath) ~= 7
     mkdir(optVarsPath);
@@ -20,9 +33,11 @@ if exist(testResultPath) ~= 7
 end
 %% data preparation
 Ds = dataPreparation();
-
-[trainDs,testDs] = dsPreparation();
-
+if wt
+    [dsTrain,dsTest] = imgDsPreparation();
+else
+    [trainDs,testDs] = dsPreparation();
+end
 disp('data set preparation done');
 %% hyper parameter search 
 %% WTCNN
@@ -107,6 +122,11 @@ for i = 1:numTesting
     YLable = load(fullfile('DataSet','HyperparameterSearch','Test','YSearchTest.mat')).YSearchTest;
     dataClassNames = ["blink","n/a", "muscle-artifact"];pixelLabelIds = 1:numel(dataClassNames);
     classNames=["blink","noBlink", "muscleArtifact"];
+    imdsTrain = imageDatastore(['DataSet\Test\Train\Img' num2str(i) '\WTImg'],FileExtensions=".jpg");
+    pxdsTrain = pixelLabelDatastore(['DataSet\Test\Train\Img' num2str(i) '\PLImg'],classNames,pixelLabelIds);
+    
+    imdsTest = imageDatastore(['DataSet\Test\Test\Img' num2str(i) '\WTImg'],FileExtensions=".jpg");
+    pxdsTest = pixelLabelDatastore(['DataSet\Test\Test\Img' num2str(i) '\PLImg'],classNames,pixelLabelIds);
     
     dsTrain = combine(imdsTrain,pxdsTrain);
     layers = simpleCNNpixel(imSize,numBlocks,filterSizeC,filterSizeS, ...
@@ -119,6 +139,7 @@ for i = 1:numTesting
     valError = 1-mean(YPred == TY','all');
     accuracy{end+1} = valError;
     YPredResult{end+1} = YPred;
+%     disp(i);
     
 end
 

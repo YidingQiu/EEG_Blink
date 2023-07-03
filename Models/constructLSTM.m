@@ -8,7 +8,7 @@ function lgraph = constructLSTM(numFeatures,numBlocks,numHiddenUnits,numResponse
 
     end
     
-    layer  = [sequenceInputLayer(numFeatures, 'Normalization','zscore','Name','sequenceInputLayer')];
+    layer  = [sequenceInputLayer(numFeatures,'Name','sequenceInputLayer')];
 
     if imgInput
 
