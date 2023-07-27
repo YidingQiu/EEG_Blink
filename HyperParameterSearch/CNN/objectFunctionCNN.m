@@ -1,26 +1,28 @@
-function ObjFcn = objectFunctionCNN(Traindata, Testdata,  Maxepochs)
+function ObjFcn = objectFunctionCNN(Traindata, Testdata,  Maxepochs,i)
 ObjFcn = @valErrorFun;
     function [valError,emp, net, YPred, TY] = valErrorFun(optVars,~)
         emp = [];
         rng(1);
         
-        TY = Testdata{1};
-        imgsTest = Testdata{2};
-        imSize=size(imread('DataSet\HyperparameterSearch\Train\Img\WTImg\0001_wt.jpg'));
+        
+        % TY = Testdata{1};
+        % imgsTest = Testdata{2};
+        % imSize=size(imread('DataSet\HyperparameterSearch\Train\Img\WTImg\0001_wt.jpg'));
         numBlocks = optVars.numBlocks;
         filterSizeC= floor((optVars.filterSizeC)/2)*2+1;
         filterSizeS= floor((optVars.filterSizeS)/2)*2+1;
         numFilter= optVars.filterNum;
         dropoutLayerRegularization = optVars.dropoutLayerRegularization;
         learningrate = optVars.learningrate;
-%         activation=optVars.activation;
+        % activation=optVars.activation;
         batchSize=optVars.batchSize;
 
-        classes = ["blink","noBlink", "muscleArtifact"];
+       
         % imSize,numBlocks,filterSizeC,filterSizeS, filterNum, dropoutLayerRegularization,classes,activation
-        layers = simpleCNNpixel(imSize,numBlocks,filterSizeC,filterSizeS, ...
-            numFilter, dropoutLayerRegularization,classes,"relu");%,
-        
+        classes = ["blink","noBlink", "muscleArtifact"];
+        % layers = simpleCNNpixel(imSize,numBlocks,filterSizeC,filterSizeS, ...
+        %     numFilter, dropoutLayerRegularization,classes,"relu");%,
+        constructCWTCNN(i,numBlocks,filterSizeC,filterSizeS, numFilter, dropoutLayerRegularization,classes,"relu");
 
 
         options = trainingOptions('adam', ...

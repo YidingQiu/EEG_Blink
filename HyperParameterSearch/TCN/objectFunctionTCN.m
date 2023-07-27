@@ -22,8 +22,8 @@ ObjFcn = @valErrorFun;
             'MaxEpochs',Maxepochs, ...
             'MiniBatchSize',miniBatchSize, ...
             'InitialLearnRate',learningrate, ...
-            'LearnRateDropPeriod',10, ...
-            'LearnRateDropFactor',0.75, ...
+            'LearnRateDropPeriod',5, ...
+            'LearnRateDropFactor',0.5, ...
             'LearnRateSchedule','piecewise', ...
             'Plots','none',...
             'GradientThreshold',1, ...
@@ -31,21 +31,26 @@ ObjFcn = @valErrorFun;
             'Verbose',0,...
             'DispatchInBackground',true);
         
-        
-        net = trainNetwork(XTrain,YTrain,layers,options);
-        
-
-        YPred = classify(net, XTest, "MiniBatchSize",miniBatchSize);
-        
-        %%%%%%%%%%%%%%%%%
-        valError = 0;
-        for k = 1:length(YPred)
-            % fix this
-            valError = valError + mean(YPred{k} == YTest{k});
+        try
+            net = trainNetwork(XTrain,YTrain,layers,options);
+            
+    
+            YPred = classify(net, XTest, "MiniBatchSize",miniBatchSize);
+            
+            %%%%%%%%%%%%%%%%%
+            valError = 0;
+            for k = 1:length(YPred)
+                % fix this
+                valError = valError + mean(YPred{k} == YTest{k});
+            end
+            % return a numeric scalar
+            valError = 1 - valError/length(YPred);
+            %%%%%%%%%%%%%%%%%%
+        catch
+            valError = 1;
+            net = sruct;
+            YPred = {};
         end
-        % return a numeric scalar
-        valError = 1 - valError/length(YPred);
-        %%%%%%%%%%%%%%%%%%
 
 
     end
