@@ -1,8 +1,9 @@
 % this is Bayes Optimization process for all models
 
 %% setting
-maxEpochs = 30;%30;
-numMaxObjectiveEvaluation = 100 ;%100;
+rng(1);
+maxEpochs = 3;%30;
+numMaxObjectiveEvaluation = 10 ;%100;
 numChannel = 5:-2:1;
 
 
@@ -18,6 +19,11 @@ YTrain = load(fullfile('DataSet','HyperparameterSearch','Train','YSearchTrain.ma
 
 XTest = load(fullfile('DataSet','HyperparameterSearch','Test','XSearchTest.mat')).XSearchTest;
 YTest = load(fullfile('DataSet','HyperparameterSearch','Test','YSearchTest.mat')).YSearchTest;
+
+categroies = {'closing', 'opening', 'n/a', 'muscle-artifact'};
+[YTrain,locationTrain] = generateOpeningClosing(XTrain, YTrain,categroies);
+[YTest,locationTest] = generateOpeningClosing(XTest, YTest,categroies);
+[trainDs,testDs] = dsPreparation();
 
 
 %% bayes optimize
@@ -89,7 +95,7 @@ disp("optimization done. optimizedVariables in HyperParameterSearch/OptVars")
 %%
 function BayesObject = createBayesOpt(objectFunction, optimVars,numMaxObjectiveEvaluation)
     BayesObject = bayesopt( objectFunction, optimVars, ...
-                            'MaxTime',                  12*60*60, ...
+                            'MaxTime',                  6*60*60, ...
                             'Verbose',                  1,...
                             'UseParallel',              false,...
                             'IsObjectiveDeterministic', true, ...
