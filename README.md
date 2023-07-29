@@ -1,7 +1,10 @@
 ### EEG Blink detector
+
+Notice: This is not "Blink" or "Blinker", but This project also provides a blink detection plugin for EEGLAB and a detect function. This project is being closely watched and updated continuously. If you have any suggestions or find any issues, please leave your review or discussion, or contact the [email](#contact_info) below.
+
 This project provides a blink detection function for EEG data, utilizing various deep learning models and preprocessing techniques. 
 
-Currently, the available functionality is in a function [detectBlink](Package/example.pdf). You just need to input Fp1, Fp2, and Fz (or at least one of Fp1 and Fp2) along with the sampling frequency.
+Currently, the available functionality is in a function [detectBlink](Package/example.pdf), and an EEGLAB plugin. You just need to input Fp1, Fp2, and Fz (or at least one of Fp1 and Fp2) along with the sampling frequency.
 
 To use the detectBlinks function, ensure that the Package and Models folders are included in your MATLAB search path.
 
@@ -9,8 +12,6 @@ To use the detectBlinks function, ensure that the Package and Models folders are
 ![this is a blink finding function](https://user-images.githubusercontent.com/70067693/233838531-fb55a615-9206-460e-a13d-1cd7e9d054cd.png)
 
 An example of the function is in Package\/[examlpe.pdf](Package/example.pdf) (Package\/[examlpe.mlx](Package/example.mlx)). 
-
-This project is being closely watched and updated continuously. If you have any suggestions or find any issues, please leave your review or discussion, or contact the [email](#contact_info) below.
 
 ### File exchange repository
 [![View EEG_Blink on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://au.mathworks.com/matlabcentral/fileexchange/120873-eeg_blink)
