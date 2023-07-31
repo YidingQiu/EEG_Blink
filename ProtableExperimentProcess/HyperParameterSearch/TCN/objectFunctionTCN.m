@@ -46,7 +46,8 @@ ObjFcn = @valErrorFun;
             % return a numeric scalar
             valError = 1 - valError/length(YPred);
             %%%%%%%%%%%%%%%%%%
-        catch
+        catch EM
+            disp(EM)
             valError = 1;
             net = [];
             YPred = {};

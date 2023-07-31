@@ -30,7 +30,7 @@ function lgraph = constructCWTCNN(numFeatures,numBlocks,filterSizeC,filterSizeS,
     paddingSizeS = floor(filterSizeS/2);
     paddingSizeC = floor(filterSizeC/2);
     pool = floor(nthroot(numFeatures,numBlocks))+2;    
-    response = numel(classes);
+    response = 4;%numel(classes);
     
 
     remains = numFeatures; % size of first S channel

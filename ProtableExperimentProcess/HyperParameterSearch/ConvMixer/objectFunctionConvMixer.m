@@ -9,10 +9,10 @@ ObjFcn = @valErrorFun;
         XTest = Testdata{:,1};
         YTest = Testdata{:,2};
     
-        try
+        % try
             miniBatchSize = optVars.miniBatchSize;
             learningrate = optVars.learningrate;
-            layers = cwtCovMix(numFeatures = size(XTrain{1},1), ...
+            layers = cwtConvMixer(numFeatures = size(XTrain{1},1), ...
                 Depth = optVars.Depth, ...
                 HiddenDimension = optVars.HiddenDimension, ...
                 filterSizeS = optVars.filterSizeS, ...
@@ -49,12 +49,12 @@ ObjFcn = @valErrorFun;
             % return a numeric scalar
             valError = 1 - valError/length(YPred);
             %%%%%%%%%%%%%%%%%%
-        catch EM
-            valError = 1;
-            net = struct;
-            YPred = cell(1);
-            disp(EM)
-        end
+        % catch EM
+        %     valError = 1;
+        %     net = struct;
+        %     YPred = cell(1);
+        %     disp(EM)
+        % end
 
 
     end

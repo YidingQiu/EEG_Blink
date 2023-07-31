@@ -3,10 +3,8 @@
 %% setting
 rng(1);
 maxEpochs = 3;%30;
-numMaxObjectiveEvaluation = 10 ;%100;
+numMaxObjectiveEvaluation =2 ;%100;
 numChannel = 5:-2:1;
-
-
 
 if ~isfolder(fullfile('HyperParameterSearch','OptVars'))
     mkdir(fullfile('HyperParameterSearch','OptVars'));
@@ -23,7 +21,6 @@ YTest = load(fullfile('DataSet','HyperparameterSearch','Test','YSearchTest.mat')
 categroies = {'closing', 'opening', 'n/a', 'muscle-artifact'};
 [YTrain,locationTrain] = generateOpeningClosing(XTrain, YTrain,categroies);
 [YTest,locationTest] = generateOpeningClosing(XTest, YTest,categroies);
-[trainDs,testDs] = dsPreparation();
 
 
 %% bayes optimize
@@ -35,21 +32,22 @@ for i = numChannel
     trainDs = {XTrain, YTrain};
     testDs = {XTest, YTest};
     
-    %% CovMix
+    % ConvMixer
     optimVars = [
         % Depth HiddenDimension paddingSizeS  dropoutLayerRegularization 
-        optimizableVariable('Depth',[1 5],'Type','integer')
-        optimizableVariable('numFilters',[1 8],'Type','integer')
-        optimizableVariable('HiddenDimension',[2 32],'Type','integer')
-        optimizableVariable('filterSizeS',[1 5],'Type','integer')
+        optimizableVariable('Depth',[1 5],'Type','integer')%5
+        optimizableVariable('numFilters',[1 8],'Type','integer')%8
+        optimizableVariable('HiddenDimension',[2 32],'Type','integer')%32
+        optimizableVariable('filterSizeS',[1 5],'Type','integer')%5
         optimizableVariable('dropoutLayerRegularization',[0.00 0.1],'Type','real')
-        optimizableVariable('miniBatchSize',[8 128],'Type','integer')    
+        optimizableVariable('miniBatchSize',[8 128 ],'Type','integer')% 128 
         optimizableVariable('learningrate',[1e-4 1e-1],'Type','real',"Transform","log")];
 
-    objectFunction = objectFunctionCovMix(trainDs, testDs,  maxEpochs);
+    objectFunction = objectFunctionConvMixer(trainDs, testDs,  maxEpochs);
     BayesObject = createBayesOpt(objectFunction, optimVars,numMaxObjectiveEvaluation);
-    [bestError, trainedNet] = getResult(BayesObject,'CovMix',i);
-    %% TCN
+    [bestError, trainedNet] = getResult(BayesObject,'ConvMixer',i);    
+
+    % TCN
     optimVars = [
         %numFilters, filterSize, numBlocks, dropoutFactor
         optimizableVariable('numFilters',[2 32],'Type','integer')
@@ -62,7 +60,8 @@ for i = numChannel
     objectFunction = objectFunctionTCN(trainDs, testDs,  maxEpochs);
     BayesObject = createBayesOpt(objectFunction, optimVars,numMaxObjectiveEvaluation);
     [bestError, trainedNet] = getResult(BayesObject,'TCN',i);
-    %% LSTM & biLSTM
+
+    % LSTM & biLSTM
     optimVars = [
         optimizableVariable('miniBatchSize',[8 128],'Type','integer')%[8 128]
         optimizableVariable('learningrate',[1e-4 1e-1],'Type','real',"Transform","log")
@@ -75,7 +74,8 @@ for i = numChannel
     objectFunction = objectFunctionbiLSTM(trainDs, testDs,  maxEpochs);
     BayesObject = createBayesOpt(objectFunction, optimVars,numMaxObjectiveEvaluation);
     [bestError, trainedNet] = getResult(BayesObject,'biLSTM',i);
-    %% WT-CNN
+
+    % WT-CNN
     optimVars = [
         %numBlocks,filterSizeC,filterSizeS, filterNum,
         %dropoutLayerRegularization,activation,learningrate
@@ -108,6 +108,6 @@ end
 function [valError,net] = getResult(BayesObject,modelName,numChannel)
     optVars = bestPoint(BayesObject);
 
-    save(['HyperParameterSearch\OptVars\', modelName, num2str(numChannel), 'optVars.mat'],"optVars","-mat");
+    save([fullfile('HyperParameterSearch','OptVars'),filesep , modelName, num2str(numChannel), 'optVars.mat'],'optVars','-mat');
     [valError,~,net, YPred, YTest] = BayesObject.ObjectiveFcn(optVars,1);
 end

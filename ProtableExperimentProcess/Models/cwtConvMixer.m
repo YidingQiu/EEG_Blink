@@ -1,4 +1,4 @@
-function lgraph = cwtCovMix(opts)
+function lgraph = cwtConvMixer(opts)
 % convMixerLayers   Build ConvMixer architecture.
 
     arguments
@@ -75,7 +75,7 @@ function lgraph = cwtCovMix(opts)
     
     % Output Layers
     outputLayers = [ 
-        convolution2dLayer([floor(269/opts.patchSize)+1 filterSizeS],response,'Padding',[0 0 floor(filterSizeS/2) floor(filterSizeS/2)],"Name",'fullCov')
+        convolution2dLayer([floor(269/opts.patchSize)+1 floor(filterSizeS/2)*2+1],response,'Padding',[0 0 floor(filterSizeS/2) floor(filterSizeS/2)],"Name",'fullCov')
     
         dropoutLayer(dropoutLayerRegularization,'Name','Dropout')
         softmaxLayer('Name','softMax')

@@ -1,6 +1,6 @@
 % put RawData folder and raw_labled.mat in root dir together with this file
 % 
-[currentScriptPath,~,~] = fileparts(mfilename('fullpath'))
+[currentScriptPath,~,~] = fileparts(mfilename('fullpath'));
 subpath = genpath(currentScriptPath);
 addpath(subpath); % path set up
 %% variables
@@ -11,11 +11,11 @@ maxEpochs = 30;               % training epoch
 numTesting = 10;              % number of tests for optimised models 
 
 %% build path
-optVarsPath = 'HyperParameterSearch\OptVars';  % optimised parameter here
+optVarsPath = fullfile('HyperParameterSearch','OptVars');  % optimised parameter here
 if exist(optVarsPath) ~= 7
     mkdir(optVarsPath);
 end
-testResultPath = 'Test\Results';
+testResultPath = fullfile('Test','Results');
 if exist(testResultPath) ~= 7
     mkdir(testResultPath);
 end
